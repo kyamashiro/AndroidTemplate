@@ -3,16 +3,27 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/nav_graph"
-            app:startDestination="@id/mainFragment"
->
+            app:startDestination="@id/mainFragment">
+
     <fragment android:id="@+id/mainFragment"
               android:name="com.example.mvvmtemplate.ui.main.MainFragment"
               android:label="main_fragment"
               tools:layout="@layout/main_fragment">
-        <action android:id="@+id/action_mainFragment_to_secondFragment" app:destination="@id/secondFragment"/>
+        <action android:id="@+id/action_mainFragment_to_secondFragment"
+                app:destination="@id/secondFragment"/>
+        <action android:id="@+id/action_mainFragment_to_thirdFragment"
+                app:destination="@id/thirdFragment"/>
     </fragment>
+
     <fragment android:id="@+id/secondFragment"
               android:name="com.example.mvvmtemplate.ui.second.SecondFragment"
               android:label="second_fragment"
-              tools:layout="@layout/second_fragment"/>
+              tools:layout="@layout/second_fragment">
+    </fragment>
+
+    <fragment android:id="@+id/thirdFragment"
+              android:name="com.example.mvvmtemplate.ui.third.ThirdFragment"
+              android:label="third_fragment"
+              tools:layout="@layout/third_fragment"/>
+
 </navigation>
