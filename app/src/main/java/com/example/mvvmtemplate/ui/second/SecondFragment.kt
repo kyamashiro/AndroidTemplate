@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.mvvmtemplate.R
+import com.example.mvvmtemplate.databinding.SecondFragmentBinding
 import com.example.mvvmtemplate.entity.User
 
 class SecondFragment : Fragment() {
@@ -18,6 +19,7 @@ class SecondFragment : Fragment() {
 
     private lateinit var viewModel: SecondViewModel
     private lateinit var user: User
+    private var binding: SecondFragmentBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +43,10 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val message = "Hello ${user.userName}"
-        view.findViewById<TextView>(R.id.second_fragment_text).text = message
+        binding = DataBindingUtil.bind(view)
+        binding!!.user = user
+        val message = "safeArgs Hello ${user.userName}"
+        binding!!.secondFragmentText.text = message
     }
 
 }
