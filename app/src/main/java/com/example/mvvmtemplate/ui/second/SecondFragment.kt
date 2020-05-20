@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import com.example.mvvmtemplate.R
 import com.example.mvvmtemplate.databinding.SecondFragmentBinding
 import com.example.mvvmtemplate.entity.User
@@ -17,7 +17,7 @@ class SecondFragment : Fragment() {
         fun newInstance() = SecondFragment()
     }
 
-    private lateinit var viewModel: SecondViewModel
+    private val viewModel: SecondViewModel by viewModels()
     private lateinit var user: User
     private var binding: SecondFragmentBinding? = null
 
@@ -35,12 +35,6 @@ class SecondFragment : Fragment() {
         return inflater.inflate(R.layout.second_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SecondViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = DataBindingUtil.bind(view)
@@ -48,5 +42,4 @@ class SecondFragment : Fragment() {
         val message = "safeArgs Hello ${user.userName}"
         binding!!.secondFragmentText.text = message
     }
-
 }
